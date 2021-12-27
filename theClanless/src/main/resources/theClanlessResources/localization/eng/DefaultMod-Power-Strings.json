@@ -5,18 +5,11 @@
       "You have gained an additional strike this round, and cannot gain more until next round."
     ]
   },
-  "theClanless:ArmorOfVitalityPower": {
-    "NAME": "Armor of Vitality",
-    "DESCRIPTIONS": [
-      "Attackers suffer #b",
-      " damage."
-    ]
-  },
   "theClanless:BloodhealPower": {
     "NAME": "Bloodheal",
     "DESCRIPTIONS": [
       "Your next #b",
-      " attack restores HP and exhausts",
+      " attack restores HP and exhausts.",
       " attacks restores HP and exhausts."
     ]
   },
@@ -48,6 +41,13 @@
       "Whenever you play a card, draw #b",
       " card",
       " cards"
+    ]
+  },
+  "theClanless:LoseThornsPower": {
+    "NAME": "Thorns Down",
+    "DESCRIPTIONS": [
+      "Reduce Thorns by #b",
+      " at start of turn."
     ]
   },
   "theClanless:ManeuverPower": {

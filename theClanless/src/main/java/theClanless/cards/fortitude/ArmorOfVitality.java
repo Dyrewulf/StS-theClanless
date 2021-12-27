@@ -4,9 +4,10 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ThornsPower;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
-import theClanless.powers.ArmorOfVitalityPower;
+import theClanless.powers.LoseThornsPower;
 import theClanless.theClanlessMod;
 
 public class ArmorOfVitality extends AbstractDynamicCard {
@@ -45,6 +46,7 @@ public class ArmorOfVitality extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new GainBlockAction(p, p, block));
-        addToBot(new ApplyPowerAction(p, p, new ArmorOfVitalityPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new ThornsPower(p, magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new LoseThornsPower(p, magicNumber)));
     }
 }
