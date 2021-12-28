@@ -9,7 +9,7 @@
     "NAME": "Bloodheal",
     "DESCRIPTIONS": [
       "Your next #b",
-      " attack restores HP and exhausts",
+      " attack restores HP and exhausts.",
       " attacks restores HP and exhausts."
     ]
   },
@@ -41,6 +41,13 @@
       "Whenever you play a card, draw #b",
       " card",
       " cards"
+    ]
+  },
+  "theClanless:LoseThornsPower": {
+    "NAME": "Thorns Down",
+    "DESCRIPTIONS": [
+      "Reduce Thorns by #b",
+      " at start of turn."
     ]
   },
   "theClanless:ManeuverPower": {
