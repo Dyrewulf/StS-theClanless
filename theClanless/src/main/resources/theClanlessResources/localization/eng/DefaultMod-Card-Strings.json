@@ -9,7 +9,7 @@
   },
   "theClanless:ArmorOfVitality": {
     "NAME": "Armor of Vitality",
-    "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn, deal !M! damage back."
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! Thorns. NL Next turn, lose !M! Thorns."
   },
   "theClanless:Backstab": {
     "NAME": "Backstab",
@@ -126,6 +126,10 @@
   "theClanless:FlurryOfAction": {
     "NAME": "Flurry of Action",
     "DESCRIPTION": "Deal !D! damage. NL Next turn, gain [G]."
+  },
+  "theClanless:Fleetness": {
+    "NAME": "Fleetness",
+    "DESCRIPTION": "When you play an Attack, gain !M! theclanless:Maneuver."
   },
   "theClanless:ForcedVigilance": {
     "NAME": "Forced Vigilance",
@@ -420,5 +424,16 @@
   "theClanless:WellAimedCar": {
     "NAME": "Well Aimed Car",
     "DESCRIPTION": "Deal !D! damage."
+  },
+  "theClanless:Handgun": {
+    "NAME": "Saturday Night Special",
+    "DESCRIPTION": "theclanless:Ranged_strike for !D! damage. NL theclanless:Maneuver for !M! additional damage. Gain a maneuver.",
+    "UPGRADE_DESCRIPTION": "theclanless:Ranged_strike for !D! damage. NL theclanless:Maneuver for !M! additional damage. Gain a maneuver.",
+    "EXTENDED_DESCRIPTION": [
+      "Saturday Night Special",
+      "Beretta 9mm",
+      ".44 Magnum",
+      "Desert Eagle"
+    ]
   }
 }
