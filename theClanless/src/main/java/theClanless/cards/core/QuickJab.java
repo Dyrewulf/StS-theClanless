@@ -30,8 +30,8 @@ public class QuickJab extends AbstractDynamicCard {
 
     private static final int COST = 0;
 
-    private static final int DAMAGE = 5;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 4;
+    private static final int DAMAGE_PLUS = 2;
 
 
     public QuickJab() {
@@ -48,7 +48,7 @@ public class QuickJab extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
     }
 
 
@@ -57,7 +57,7 @@ public class QuickJab extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeDamage(DAMAGE_PLUS);
             this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

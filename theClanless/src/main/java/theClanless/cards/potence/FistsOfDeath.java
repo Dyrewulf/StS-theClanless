@@ -1,6 +1,7 @@
 package theClanless.cards.potence;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.unique.SpotWeaknessAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -28,12 +29,12 @@ public class FistsOfDeath extends AbstractDynamicCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.POWER;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheClanless.Enums.POTENCE;
 
     private static final int COST = 1;
-    private static final int MAGIC = 1;
+    private static final int MAGIC = 3;
     private static final int UPGRADE_MAGIC = 1;
 
     // /STAT DECLARATION/
@@ -48,8 +49,7 @@ public class FistsOfDeath extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
-                new StrengthPower(p, magicNumber), magicNumber));
+        addToBot(new SpotWeaknessAction(this.magicNumber, m));
     }
 
     //Upgraded stats.

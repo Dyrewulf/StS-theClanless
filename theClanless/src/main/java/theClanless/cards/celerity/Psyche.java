@@ -1,28 +1,24 @@
 package theClanless.cards.celerity;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.watcher.PressEndTurnButtonAction;
 import com.megacrit.cardcrawl.actions.watcher.SkipEnemiesTurnAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.WhirlwindEffect;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
-import theClanless.powers.ManeuverPower;
-import theClanless.powers.PsychePower;
 import theClanless.theClanlessMod;
 
 import static theClanless.theClanlessMod.makeCardPath;
 
 public class Psyche extends AbstractDynamicCard {
 
-    public static final String ID = theClanlessMod.makeID(Psyche.class.getSimpleName());
+    public static final String ID = theClanlessMod.makeID("Psyche");
     public static final String IMG = makeCardPath("Psyche.png");
-
-    // /TEXT DECLARATION/
-
 
     // STAT DECLARATION
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -34,37 +30,23 @@ public class Psyche extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheClanless.Enums.CELERITY;
 
-    private static final int COST = 1;
+    private static final int COST = 3;
     private static final int UPGRADE_COST = 2;
-    private static final int MAGICNUMBER  = 3;
-
 
     // /STAT DECLARATION/
 
 
     public Psyche() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
+        this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new ManeuverPower(p, p, magicNumber))
-        );
-        if (this.upgraded) {
-            AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(p, p, new PsychePower(p, p, 1), 1)
-            );
-            AbstractDungeon.actionManager.addToBottom(
-                    new SkipEnemiesTurnAction()
-            );
-            AbstractDungeon.actionManager.addToBottom(
-                    new PressEndTurnButtonAction()
-            );
-            this.exhaust = true;
-        }
+        addToBot(new VFXAction(new WhirlwindEffect(new Color(1.0F, 0.9F, 0.4F, 1.0F), true)));
+        addToBot(new SkipEnemiesTurnAction());
+        addToBot(new PressEndTurnButtonAction());
     }
 
     //Upgraded stats.
@@ -73,7 +55,7 @@ public class Psyche extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeBaseCost(UPGRADE_COST);
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

@@ -42,7 +42,7 @@ public class ComputerHacking extends CustomCard {
     // STAT DECLARATION
 
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheClanless.Enums.COLOR_CLANLESSRED;
@@ -50,7 +50,7 @@ public class ComputerHacking extends CustomCard {
     private static final int COST = 1;
     private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 2;
-    private static final int MAGICNUMBER = 1;
+    private static final int MAGICNUMBER = 2;
     private static final int MAGICNUMBER_PLUS = 1;
 
     public ComputerHacking() {
@@ -63,11 +63,8 @@ public class ComputerHacking extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-
-        this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, baseMagicNumber, false), baseMagicNumber));
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, baseMagicNumber, false), baseMagicNumber));
     }
 
     // Upgraded stats.

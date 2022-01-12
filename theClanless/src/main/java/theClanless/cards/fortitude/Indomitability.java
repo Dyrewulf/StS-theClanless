@@ -6,9 +6,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.BlurPower;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
-import theClanless.powers.PressPower;
 import theClanless.theClanlessMod;
 
 import static theClanless.theClanlessMod.makeCardPath;
@@ -28,30 +28,26 @@ public class Indomitability extends AbstractDynamicCard {
     public static final CardColor COLOR = TheClanless.Enums.FORTITUDE;
 
     private static final int COST = 1;
-    private static final int BLOCK = 6;
-    private static final int BLOCK_UPGRADE = 2;
-    private static final int PRESS = 1;
-    private static final int PRESS_UPGRADE = 1;
+    private static final int BLOCK = 5;
+    private static final int BLOCK_PLUS = 3;
 
     public Indomitability() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.block = this.baseBlock = BLOCK;
-        this.magicNumber = this.baseMagicNumber = PRESS;
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBlock(BLOCK_UPGRADE);
-            upgradeMagicNumber(PRESS_UPGRADE);
+            upgradeBlock(BLOCK_PLUS);
             initializeDescription();
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainBlockAction(p, p, block));
-        addToBot(new ApplyPowerAction(p, p, new PressPower(p, p, this.magicNumber)));
+        this.addToBot(new GainBlockAction(p, p, this.block));
+        this.addToBot(new ApplyPowerAction(p, p, new BlurPower(p, 1), 1));
     }
 }

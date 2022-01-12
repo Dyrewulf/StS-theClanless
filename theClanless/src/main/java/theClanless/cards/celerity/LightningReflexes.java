@@ -1,5 +1,6 @@
 package theClanless.cards.celerity;
 
+import com.megacrit.cardcrawl.actions.unique.SkewerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,7 +15,7 @@ import static theClanless.theClanlessMod.makeCardPath;
 
 public class LightningReflexes extends AbstractDynamicCard {
 
-    public static final String ID = theClanlessMod.makeID(LightningReflexes.class.getSimpleName());
+    public static final String ID = theClanlessMod.makeID("LightningReflexes");
     public static final String IMG = makeCardPath("LightningReflexes.png");
 
 
@@ -22,28 +23,27 @@ public class LightningReflexes extends AbstractDynamicCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
-    private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheClanless.Enums.CELERITY;
 
     private static final int COST = -1;
 
+    private static final int DAMAGE = 7;
+    private static final int DAMAGE_PLUS = 3;
 
-    // /STAT DECLARATION/
 
 
     public LightningReflexes() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.exhaust = true;
+        this.damage = this.baseDamage = DAMAGE;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new LightningReflexesAction(p, this.upgraded, this.freeToPlayOnce, this.energyOnUse)
-        );
+        addToBot(new SkewerAction(p, m, this.damage, this.damageTypeForTurn, this.freeToPlayOnce, this.energyOnUse));
     }
 
     //Upgraded stats.
@@ -51,7 +51,8 @@ public class LightningReflexes extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            upgradeDamage(DAMAGE_PLUS);
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

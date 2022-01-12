@@ -22,10 +22,7 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theClanless.cards.core.BumsRush;
-import theClanless.cards.core.Dodge;
-import theClanless.cards.core.LuckyBlow;
-import theClanless.cards.core.TargetVitals;
+import theClanless.cards.core.*;
 import theClanless.relics.CelerityRelic;
 import theClanless.relics.FortitudeRelic;
 import theClanless.relics.PotenceRelic;
@@ -103,17 +100,17 @@ public class TheClanless extends CustomPlayer {
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "theClanlessResources/images/char/defaultCharacter/orb/layer1.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer2.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer3.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer4.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer5.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer6.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer1d.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer2d.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer3d.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer4d.png",
-            "theClanlessResources/images/char/defaultCharacter/orb/layer5d.png",};
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer1.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer2.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer3.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer4.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer5.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer6.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer1d.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer2d.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer3d.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer4d.png",
+            "theClanlessResources/images/char/clanlessCharacter/orb/layer5d.png",};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
@@ -121,7 +118,7 @@ public class TheClanless extends CustomPlayer {
 
     public TheClanless(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "theClanlessResources/images/char/defaultCharacter/orb/vfx.png", null,
+                "theClanlessResources/images/char/clanlessCharacter/orb/vfx.png", null,
                 new SpriterAnimation(
                         "theClanlessResources/images/char/clanlessCharacter/Spriter/theClanlessAnimation.scml"));
 
@@ -187,7 +184,7 @@ public class TheClanless extends CustomPlayer {
         retVal.add(Dodge.ID);
 
         retVal.add(BumsRush.ID);
-        retVal.add(TargetVitals.ID);
+        retVal.add(TasteOfVitae.ID);
 
         return retVal;
     }

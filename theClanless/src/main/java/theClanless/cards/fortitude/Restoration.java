@@ -27,7 +27,8 @@ public class Restoration extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheClanless.Enums.FORTITUDE;
 
-    private static final int COST = 0;
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
     private static final int MAGICNUMBER  = 2;
 
 
@@ -53,8 +54,8 @@ public class Restoration extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.exhaust = false;
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            upgradeBaseCost(UPGRADE_COST);
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

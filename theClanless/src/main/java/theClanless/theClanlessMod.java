@@ -161,8 +161,8 @@ public class theClanlessMod implements
     public static final String BADGE_IMAGE = "theClanlessResources/images/Badge.png";
     
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "theClanlessResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "theClanlessResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_DEFAULT_SKELETON_ATLAS = "theClanlessResources/images/char/clanlessCharacter/skeleton.atlas";
+    public static final String THE_DEFAULT_SKELETON_JSON = "theClanlessResources/images/char/clanlessCharacter/skeleton.json";
     
     // =============== MAKE IMAGE PATHS =================
     
