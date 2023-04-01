@@ -1,6 +1,17 @@
 {
-"theClanless:PlaceholderPotion": {
-        "NAME": "Placeholder Potion",
-        "DESCRIPTIONS": ["Gain ", " At the end of your turn, lose ", " Strength."]
-}
+        "theClanless:PlaceholderPotion": {
+                "NAME": "Placeholder Potion",
+                "DESCRIPTIONS": [
+                        "Gain ",
+                        " At the end of your turn, lose ",
+                        " Strength."
+                ]
+        },
+        "theClanless:GiantsBloodPotion": {
+                "NAME": "Giant's Blood",
+                "DESCRIPTIONS": [
+                        "Gain ",
+                        " temporary hp for each of your missing HP (includes current temporary hp)."
+                ]
+        }
 }
