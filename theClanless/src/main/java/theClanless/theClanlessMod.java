@@ -25,7 +25,7 @@ import org.apache.logging.log4j.Logger;
 import theClanless.cards.AbstractClanlessCard;
 import theClanless.characters.TheClanless;
 import theClanless.events.IdentityCrisisEvent;
-import theClanless.potions.PlaceholderPotion;
+import theClanless.potions.GiantsBloodPotion;
 import theClanless.relics.*;
 import theClanless.util.IDCheckDontTouchPls;
 import theClanless.util.TextureLoader;
@@ -99,6 +99,10 @@ public class theClanlessMod implements
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
+
+    public static final Color GIANTSBLOOD_POTION_LIQUID = CardHelper.getColor(168.0f, 50.0f, 50.0f); // Red
+    public static final Color GIANTSBLOOD_POTION_SPOTS = CardHelper.getColor(140.0f, 180.0f, 230.0f); // Blue-Grey
+    public static final Color GIANTSBLOOD_POTION_HYBRID = CardHelper.getColor(155.0f, 50.0f, 20.0f); // Rust
     
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
@@ -420,8 +424,10 @@ public class theClanlessMod implements
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheClanless.Enums.THE_CLANLESS);
-        
+        //BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheClanless.Enums.THE_CLANLESS);
+        BaseMod.addPotion(GiantsBloodPotion.class, GIANTSBLOOD_POTION_LIQUID, GIANTSBLOOD_POTION_HYBRID, GIANTSBLOOD_POTION_SPOTS, GiantsBloodPotion.POTION_ID, TheClanless.Enums.THE_CLANLESS);
+
+
         logger.info("Done editing potions");
     }
     
