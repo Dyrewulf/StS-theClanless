@@ -1,14 +1,12 @@
 package theClanless.cards.celerity;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
-import theClanless.powers.SideslipPower;
 import theClanless.theClanlessMod;
 
 import static theClanless.theClanlessMod.makeCardPath;
@@ -22,35 +20,27 @@ public class Sideslip extends AbstractDynamicCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
-    // /TEXT DECLARATION/
 
-
-    // STAT DECLARATION
-
-
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.POWER;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheClanless.Enums.CELERITY;
 
-    private static final int COST = 1;
-    private static final int MAGIC = 1;
-    private static final int UPGRADE_MAGIC = 1;
-
-    // /STAT DECLARATION/
+    private static final int COST = 0;
+    private static final int BLOCK = 4;
+    private static final int BLOCK_PLUS = 3;
 
 
     public Sideslip() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = MAGIC;
+        this.block = this.baseBlock = BLOCK;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
-                new SideslipPower(p, p, magicNumber), magicNumber));
+        addToBot(new GainBlockAction(p, p, block));
     }
 
     //Upgraded stats.
@@ -58,8 +48,8 @@ public class Sideslip extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_MAGIC);
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeBlock(BLOCK_PLUS);
+            //rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

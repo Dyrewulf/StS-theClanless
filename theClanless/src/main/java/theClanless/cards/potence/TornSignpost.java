@@ -38,24 +38,13 @@ public class TornSignpost extends AbstractDynamicCard {
     public TornSignpost() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
-        this.isInnate = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber)
-        );
-        if (!this.upgraded) {
-            AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(p, p, new LoseStrengthPower(p, magicNumber), magicNumber)
-            );
-        } else {
-            AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(p, p, new LoseStrengthPower(p, magicNumber -2), magicNumber -2)
-            );
-        }
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));
     }
 
     //Upgraded stats.
@@ -63,9 +52,8 @@ public class TornSignpost extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.exhaust = true;
             upgradeMagicNumber(MAGICNUMBER_PLUS);
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

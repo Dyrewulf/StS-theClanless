@@ -1,5 +1,10 @@
 package theClanless.cards.potence;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -8,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theClanless.actions.RangedAttackAction;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
+import theClanless.powers.PressPower;
 import theClanless.theClanlessMod;
 
 import static theClanless.theClanlessMod.makeCardPath;
@@ -29,11 +35,11 @@ public class ThrownGate extends AbstractDynamicCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 6;
-    private static final int DAMAGE_PLUS = 3;
+    private static final int DAMAGE = 9;
+    private static final int DAMAGE_PLUS = 1;
 
-    private static final int MAGICNUMBER = 2;
-    private static final int MAGICNUMBER_PLUS = 2;
+    private static final int MAGICNUMBER = 1;
+    private static final int MAGICNUMBER_PLUS = 1;
 
     // /STAT DECLARATION/
 
@@ -42,17 +48,14 @@ public class ThrownGate extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.damage = this.baseDamage = DAMAGE;
         this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
-
-        this.clanlessTags.add(clanlessCardTags.RANGED);
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new RangedAttackAction(p, m, damage, this.damageTypeForTurn, magicNumber, 1)
-        );
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DrawCardAction(p, this.magicNumber));
     }
 
 

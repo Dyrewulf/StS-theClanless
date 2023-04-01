@@ -33,8 +33,8 @@ public class Haymaker extends AbstractDynamicCard {
 
     private static final int COST = 0;
 
-    private static final int DAMAGE = 11;
-    private static final int UPGRADE_PLUS_DMG = 5;
+    private static final int DAMAGE = 8;
+    private static final int UPGRADE_PLUS_DMG = 4;
 
     private static final int MAGICNUMBER = 1;
 
@@ -54,12 +54,8 @@ public class Haymaker extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-        );
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new VulnerablePower(p, magicNumber, false), magicNumber)
-        );
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, magicNumber, false), magicNumber));
     }
 
 
@@ -69,7 +65,7 @@ public class Haymaker extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

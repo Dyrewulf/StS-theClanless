@@ -5,12 +5,32 @@
       "You have gained an additional strike this round, and cannot gain more until next round."
     ]
   },
+  "theClanless:BloodDollPower": {
+    "NAME": "Blood Doll",
+    "DESCRIPTIONS": [
+      "Exchange HP and Energy every three turns."
+    ]
+  },
   "theClanless:BloodhealPower": {
     "NAME": "Bloodheal",
     "DESCRIPTIONS": [
       "Your next #b",
       " attack restores HP and exhausts.",
       " attacks restores HP and exhausts."
+    ]
+  },
+  "theClanless:DeathOfMyConsciencePower": {
+  "NAME": "Unhinged",
+    "DESCRIPTIONS": [
+      "At the start of your turn, gain #b",
+      " #yStrength."
+    ]
+},
+  "theClanless:FlurryOfActionPower": {
+    "NAME": "Flurry of Action",
+    "DESCRIPTIONS": [
+      "Additional Attacks deal #b",
+      " more damage."
     ]
   },
   "theClanless:ExtraTurnPower": {

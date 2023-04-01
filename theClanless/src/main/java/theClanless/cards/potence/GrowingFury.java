@@ -2,6 +2,7 @@ package theClanless.cards.potence;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ModifyDamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -18,15 +19,14 @@ import static theClanless.theClanlessMod.makeCardPath;
 
 public class GrowingFury extends AbstractDynamicCard {
 
-    public static final String ID = theClanlessMod.makeID(GrowingFury.class.getSimpleName());
+    public static final String ID = theClanlessMod.makeID("GrowingFury");
     public static final String IMG = makeCardPath("GrowingFury.png");
-
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
-    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheClanless.Enums.POTENCE;
@@ -34,9 +34,8 @@ public class GrowingFury extends AbstractDynamicCard {
     private static final int COST = 1;
 
     private static final int DAMAGE = 8;
-    private static final int UPGRADE_PLUS_DMG = 3;
-    private static final int MAGICNUMBER = 3;
-    private static final int MAGICNUMBER_PLUS = 1;
+    private static final int MAGICNUMBER = 5;
+    private static final int MAGICNUMBER_PLUS = 3;
 
 
     public GrowingFury() {
@@ -49,16 +48,8 @@ public class GrowingFury extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT)
-        );
-
-        if (AbstractDungeon.player.hasPower(PressPower.POWER_ID)) {
-            AbstractDungeon.actionManager.addToBottom(
-                    new ReducePowerAction(p, p, PressPower.POWER_ID, 1)
-            );
-            this.baseDamage += this.magicNumber;
-        }
+        addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        addToBot(new ModifyDamageAction(this.uuid, this.magicNumber));
     }
 
     // Upgraded stats.
@@ -66,7 +57,6 @@ public class GrowingFury extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
             upgradeMagicNumber(MAGICNUMBER_PLUS);
             initializeDescription();
         }

@@ -23,19 +23,19 @@ public class ItsaTrap extends AbstractDynamicCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheClanless.Enums.COLOR_CLANLESSRED;
 
-    private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
-    private static final int MAGIC = 1;
+    private static final int COST = 2;
+    private static final int UPGRADED_COST = 1;
+    private static final int MAGICNUMBER = 1;
 
 
     public ItsaTrap() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = MAGIC;
+        this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
     }
 
 

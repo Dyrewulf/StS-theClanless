@@ -14,7 +14,7 @@ import static theClanless.theClanlessMod.makeCardPath;
 
 public class SkinOfRock extends AbstractDynamicCard {
 
-    public static final String ID = theClanlessMod.makeID(SkinOfRock.class.getSimpleName());
+    public static final String ID = theClanlessMod.makeID("SkinOfRock");
     public static final String IMG = makeCardPath("SkinOfRock.png");
 
 
@@ -28,7 +28,8 @@ public class SkinOfRock extends AbstractDynamicCard {
     public static final CardColor COLOR = TheClanless.Enums.FORTITUDE;
 
     private static final int COST = 1;
-    private static final int BLOCK = 8;
+    private static final int BLOCK = 9;
+    private static final int BLOCK_PLUS = 3;
 
 
     // /STAT DECLARATION/
@@ -53,7 +54,8 @@ public class SkinOfRock extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            upgradeBlock(BLOCK_PLUS);
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

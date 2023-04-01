@@ -3,6 +3,7 @@ package theClanless.cards.fortitude;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.MetallicizePower;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
@@ -20,28 +21,26 @@ public class AblativeSkin extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.POWER;
     private static final CardColor COLOR = TheClanless.Enums.FORTITUDE;
 
-    private static final int COST = 2;
-    private static final int COST_UPGRADE = 1;
-    private static final int ARMOR = 4;
-    private static final int ARMOR_UPGRADE = 2;
+    private static final int COST = 1;
+    private static final int MAGICNUMBER = 3;
+    private static final int MAGICNUMBER_PLUS = 1;
 
     public AblativeSkin() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = ARMOR;
+        this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBaseCost(COST_UPGRADE);
-            upgradeMagicNumber(ARMOR_UPGRADE);
+            upgradeMagicNumber(MAGICNUMBER_PLUS);
             initializeDescription();
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(p, p, new PlatedArmorPower(p, this.magicNumber)));
+        addToBot(new ApplyPowerAction(p, p, new MetallicizePower(p, this.magicNumber)));
     }
 }

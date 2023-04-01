@@ -1,5 +1,9 @@
 package theClanless.cards.celerity;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,7 +18,7 @@ import static theClanless.theClanlessMod.makeCardPath;
 
 public class MercurysArrow extends AbstractDynamicCard {
 
-    public static final String ID = theClanlessMod.makeID(MercurysArrow.class.getSimpleName());
+    public static final String ID = theClanlessMod.makeID("MercurysArrow");
     public static final String IMG = makeCardPath("MercurysArrow.png");
 
 
@@ -29,14 +33,10 @@ public class MercurysArrow extends AbstractDynamicCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 3;
+    private static final int DAMAGE = 8;
+    private static final int DAMAGE_PLUS = 4;
 
-    private static final int MAGICNUMBER = 2;
-    private static final int MAGICNUMBER_PLUS = 2;
-
-    private static final int SECONDMAGICNUMBER = 2;
-    private static final int SECONDMAGICNUMBER_PLUS = 1;
-
+    private static final int MAGICNUMBER = 1;
     // /STAT DECLARATION/
 
 
@@ -44,7 +44,6 @@ public class MercurysArrow extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.damage = this.baseDamage = DAMAGE;
         this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
-        this.clanlessSecondMagicNumber = this.baseClanlessSecondMagicNumber = SECONDMAGICNUMBER;
 
         this.clanlessTags.add(clanlessCardTags.RANGED);
     }
@@ -53,9 +52,8 @@ public class MercurysArrow extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new RangedAttackAction(p, m, damage, this.damageTypeForTurn, magicNumber, clanlessSecondMagicNumber)
-        );
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DrawCardAction(p, 1));
     }
 
 
@@ -64,8 +62,7 @@ public class MercurysArrow extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(MAGICNUMBER_PLUS);
-            upgradeClanlessSecondMagicNumber(SECONDMAGICNUMBER_PLUS);
+            upgradeDamage(DAMAGE_PLUS);
             initializeDescription();
         }
     }
