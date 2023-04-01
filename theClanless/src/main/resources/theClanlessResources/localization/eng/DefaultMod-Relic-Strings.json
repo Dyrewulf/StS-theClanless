@@ -6,11 +6,25 @@
       "Adds Celerity cards to rewards."
     ]
   },
+  "theClanless:DrumOfXipeTopecRelic": {
+    "NAME": "Drum of Xipe Topec",
+    "FLAVOR": "I don't know who Xipe was, but he had rhythm!",
+    "DESCRIPTIONS": [
+      "Your Celerity cards come upgraded."
+    ]
+  },
   "theClanless:FortitudeRelic": {
     "NAME": "Fortitude",
     "FLAVOR": "Tough with the toughness.",
     "DESCRIPTIONS": [
       "Adds Fortitude cards to rewards."
+    ]
+  },
+  "theClanless:HandOfConradRelic": {
+    "NAME": "Hand of Conrad",
+    "FLAVOR": "Are you mad enough to cut off your arm and replace it?",
+    "DESCRIPTIONS": [
+      "Your Potence cards come upgraded."
     ]
   },
   "theClanless:PotenceRelic": {
