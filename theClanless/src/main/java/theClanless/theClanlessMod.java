@@ -108,7 +108,7 @@ public class theClanlessMod implements
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
 
     // Pathmaking Help
-    public static final String makePath(String resource) {
+    public static String makePath(String resource) {
         return "theClanlessResources/images/" + resource;
     }
 
