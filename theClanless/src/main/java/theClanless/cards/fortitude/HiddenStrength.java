@@ -1,7 +1,6 @@
 package theClanless.cards.fortitude;
 
 import com.megacrit.cardcrawl.actions.defect.ReinforcedBodyAction;
-import com.megacrit.cardcrawl.actions.unique.SkewerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;

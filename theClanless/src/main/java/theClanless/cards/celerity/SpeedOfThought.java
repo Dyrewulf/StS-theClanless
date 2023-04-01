@@ -8,7 +8,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.ThousandCutsPower;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
-import theClanless.powers.DeathOfMyConsciencePower;
 import theClanless.theClanlessMod;
 
 import static theClanless.theClanlessMod.makeCardPath;

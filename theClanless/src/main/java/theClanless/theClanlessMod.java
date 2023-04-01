@@ -1,8 +1,10 @@
 package theClanless;
 
-import basemod.*;
+import basemod.AutoAdd;
+import basemod.BaseMod;
+import basemod.ModLabeledToggleButton;
+import basemod.ModPanel;
 import basemod.eventUtil.AddEventParams;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -20,15 +22,17 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theClanless.cards.*;
+import theClanless.cards.AbstractClanlessCard;
 import theClanless.characters.TheClanless;
 import theClanless.events.IdentityCrisisEvent;
 import theClanless.potions.PlaceholderPotion;
-import theClanless.relics.*;
+import theClanless.relics.CelerityRelic;
+import theClanless.relics.FortitudeRelic;
+import theClanless.relics.PotenceRelic;
 import theClanless.util.IDCheckDontTouchPls;
 import theClanless.util.TextureLoader;
-import theClanless.variables.DefaultCustomVariable;
 import theClanless.variables.ClanlessSecondMagicNumber;
+import theClanless.variables.DefaultCustomVariable;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
