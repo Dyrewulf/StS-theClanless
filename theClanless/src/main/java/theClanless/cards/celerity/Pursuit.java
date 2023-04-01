@@ -25,7 +25,7 @@ public class Pursuit extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
-    public static final AbstractCard.CardColor COLOR = TheClanless.Enums.COLOR_CLANLESSRED;
+    public static final AbstractCard.CardColor COLOR = TheClanless.Enums.CELERITY;
 
     private static final int COST = 2;
 

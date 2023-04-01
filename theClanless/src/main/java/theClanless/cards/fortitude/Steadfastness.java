@@ -24,7 +24,7 @@ public class Steadfastness extends AbstractDynamicCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = TheClanless.Enums.CELERITY;
+    public static final CardColor COLOR = TheClanless.Enums.FORTITUDE;
 
     private static final int COST = 2;
     private static final int BLOCK = 13;
