@@ -26,9 +26,7 @@ import theClanless.cards.AbstractClanlessCard;
 import theClanless.characters.TheClanless;
 import theClanless.events.IdentityCrisisEvent;
 import theClanless.potions.PlaceholderPotion;
-import theClanless.relics.CelerityRelic;
-import theClanless.relics.FortitudeRelic;
-import theClanless.relics.PotenceRelic;
+import theClanless.relics.*;
 import theClanless.util.IDCheckDontTouchPls;
 import theClanless.util.TextureLoader;
 import theClanless.variables.ClanlessSecondMagicNumber;
@@ -440,6 +438,8 @@ public class theClanlessMod implements
         BaseMod.addRelicToCustomPool(new CelerityRelic(), TheClanless.Enums.COLOR_CLANLESSRED);
         BaseMod.addRelicToCustomPool(new PotenceRelic(), TheClanless.Enums.COLOR_CLANLESSRED);
         BaseMod.addRelicToCustomPool(new FortitudeRelic(), TheClanless.Enums.COLOR_CLANLESSRED);
+        BaseMod.addRelicToCustomPool(new HandOfConrad(), TheClanless.Enums.COLOR_CLANLESSRED);
+        BaseMod.addRelicToCustomPool(new DrumOfXipeTopec(), TheClanless.Enums.COLOR_CLANLESSRED);
         
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game
