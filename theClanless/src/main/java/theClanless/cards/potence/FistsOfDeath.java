@@ -20,7 +20,6 @@ public class FistsOfDeath extends AbstractDynamicCard {
     public static final String IMG = makeCardPath("FistsOfDeath.png");
 
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     // /TEXT DECLARATION/

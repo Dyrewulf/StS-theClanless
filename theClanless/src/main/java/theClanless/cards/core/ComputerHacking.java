@@ -34,7 +34,6 @@ public class ComputerHacking extends CustomCard {
     public static final String IMG = makeCardPath("ComputerHacking.png");
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -74,7 +73,6 @@ public class ComputerHacking extends CustomCard {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
             upgradeMagicNumber(MAGICNUMBER_PLUS);
-            this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

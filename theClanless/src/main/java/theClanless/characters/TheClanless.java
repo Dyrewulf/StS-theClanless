@@ -38,7 +38,7 @@ import static theClanless.theClanlessMod.*;
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
 
-public class TheClanless extends CustomPlayer {
+public class  TheClanless extends CustomPlayer {
 
     public static final Logger logger = LogManager.getLogger(theClanlessMod.class.getName());
 

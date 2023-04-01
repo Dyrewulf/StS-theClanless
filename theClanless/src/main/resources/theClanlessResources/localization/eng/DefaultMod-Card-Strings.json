@@ -31,7 +31,8 @@
   },
   "theClanless:BloodDoll": {
     "NAME": "Blood Doll",
-    "DESCRIPTION": "Every three turns you may exchange HP for [E]."
+    "DESCRIPTION": "Every three turns you may exchange HP for [E].",
+    "UPGRADE_DESCRIPTION": "Every three turns you may exchange HP for [E] at a better rate. "
   },
   "theClanless:Blur": {
     "NAME": "Blur",
@@ -66,8 +67,7 @@
   },
   "theClanless:ComputerHacking": {
     "NAME": "Computer Hacking",
-    "DESCRIPTION": "Deal !D! damage and apply !M! Vulnerable.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage and apply !M! Vulnerable."
+    "DESCRIPTION": "Deal !D! damage and apply !M! Vulnerable."
   },
   "theClanless:DaringTheDawn": {
     "NAME": "Daring the Dawn",
@@ -99,8 +99,7 @@
   },
   "theClanless:Dodge": {
     "NAME": "Dodge",
-    "DESCRIPTION": "Gain !B! Block.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block."
   },
   "theClanless:Earthshock": {
     "NAME": "Earthshock",
@@ -237,7 +236,7 @@
   },
   "theClanless:Psyche": {
     "NAME": "Psyche!",
-    "DESCRIPTION": "You cannot draw additional cards this turn. Reduce the cost of all cards in your hand to 0 this turn."
+    "DESCRIPTION": "Take another turn after this one. NL End your turn. NL Exhaust."
   },
   "theClanless:PushingTheLimit": {
     "NAME": "Pushing the Limit",
@@ -250,17 +249,11 @@
   },
   "theClanless:Pursuit": {
     "NAME": "Pursuit",
-    "DESCRIPTION": "Deal !D! damage for each Skill in your hand.",
-    "EXTENDED_DESCRIPTION": [
-      " NL (You have ",
-      " Skill).",
-      " Skills)."
-    ]
+    "DESCRIPTION": "Deal !D! damage for each Skill in your hand."
   },
   "theClanless:QuickJab": {
     "NAME": "Quick Jab",
-    "DESCRIPTION": "Deal !D! damage. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Exhaust."
   },
   "theClanless:RapidHealing": {
     "NAME": "Rapid Healing",
