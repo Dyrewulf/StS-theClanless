@@ -1,16 +1,18 @@
 package theClanless.cards.core;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theClanless.actions.BumsRushAction;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
-import theClanless.powers.ManeuverPower;
-import theClanless.powers.PressPower;
 import theClanless.theClanlessMod;
+
+import java.util.ArrayList;
 
 import static theClanless.theClanlessMod.makeCardPath;
 
@@ -28,29 +30,35 @@ public class BumsRush extends AbstractDynamicCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 9;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 7;
+    private static final int DAMAGE_PLUS = 2;
 
-    private static final int MANEUVER = 1;
-    private static final int MANEUVER_UPGRADE = 2;
+    private static final int MAGICNUMBER = 1;
+    private static final int MAGICNUMBER_PLUS = 1;
 
-    private static final int PRESS = 1;
-    private static final int PRESS_UPGRADE = 2;
+    private ArrayList<AbstractCard> CombatCards = new ArrayList<AbstractCard>();
     // /STAT DECLARATION/
 
     public BumsRush() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = MANEUVER;
-        clanlessSecondMagicNumber = baseClanlessSecondMagicNumber = PRESS;
+        magicNumber = baseMagicNumber = MAGICNUMBER;
+
+        CombatCards.add(new QuickJab());
+        CombatCards.add(new Haymaker());
+        CombatCards.add(new FakeOut());
+        CombatCards.add(new Disengage());
+        CombatCards.add(new BoxedIn());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        addToBot(new ApplyPowerAction(p, p, new ManeuverPower(p, p, this.magicNumber)));
-        addToBot(new ApplyPowerAction(p, p, new PressPower(p, p, this.clanlessSecondMagicNumber)));
+
+        for (int i = 0; i < magicNumber; i++) {
+            addToBot(new BumsRushAction(p, CombatCards));
+        }
     }
 
     // Upgraded stats.
@@ -58,9 +66,8 @@ public class BumsRush extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(MANEUVER_UPGRADE);
-            upgradeClanlessSecondMagicNumber(PRESS_UPGRADE);
+            upgradeDamage(DAMAGE_PLUS);
+            upgradeMagicNumber(MAGICNUMBER_PLUS);
             initializeDescription();
         }
     }

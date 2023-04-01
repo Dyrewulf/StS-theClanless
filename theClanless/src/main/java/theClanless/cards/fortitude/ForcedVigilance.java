@@ -1,15 +1,13 @@
 package theClanless.cards.fortitude;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.BetterDiscardPileToHandAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
-import theClanless.powers.ForcedVigilancePower;
-import theClanless.powers.InfernalPursuitPower;
 import theClanless.theClanlessMod;
 
 import static theClanless.theClanlessMod.makeCardPath;
@@ -25,28 +23,28 @@ public class ForcedVigilance extends AbstractDynamicCard {
 
 
 
-    private static final CardRarity RARITY = CardRarity.RARE;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.POWER;
+    private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheClanless.Enums.FORTITUDE;
 
-    private static final int COST = 2;
-    private static final int MAGIC = 1;
-    private static final int UPGRADE_MAGIC = 1;
+    private static final int COST = 1;
+    private static final int BLOCK = 3;
+    private static final int BLOCK_PLUS = 2;
 
 
     public ForcedVigilance() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = MAGIC;
+        this.block = this.baseBlock = BLOCK;
+        this.exhaust = true;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new ForcedVigilancePower(p, p, magicNumber), magicNumber)
-        );
+        addToBot(new GainBlockAction(p, p, this.block));
+        addToBot(new BetterDiscardPileToHandAction(1));
     }
 
     //Upgraded stats.
@@ -54,7 +52,8 @@ public class ForcedVigilance extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_MAGIC);
+            upgradeBlock(BLOCK_PLUS);
+            this.exhaust = false;
             this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }

@@ -3,18 +3,17 @@ package theClanless.cards.fortitude;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
+import com.megacrit.cardcrawl.powers.WraithFormPower;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
-import theClanless.powers.InfernalPursuitPower;
-import theClanless.powers.UndeadPersistencePower;
 import theClanless.theClanlessMod;
 
 import static theClanless.theClanlessMod.makeCardPath;
 
-public class UndeadPersistence extends AbstractDynamicCard {
+public class    UndeadPersistence extends AbstractDynamicCard {
 
     public static final String ID = theClanlessMod.makeID("UndeadPersistence");
     public static final String IMG = makeCardPath("UndeadPersistence.png");
@@ -30,22 +29,23 @@ public class UndeadPersistence extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = TheClanless.Enums.FORTITUDE;
 
-    private static final int COST = 1;
-    private static final int UPGRADED_COST = 0;
-    private static final int MAGIC = 1;
+    private static final int COST = 3;
+    private static final int MAGICNUMBER = 2;
+    private static final int MAGICNUMBER_PLUS = 1;
+
 
 
     public UndeadPersistence() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = MAGIC;
+        this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
     }
 
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
-                new UndeadPersistencePower(p, p, magicNumber), magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new IntangiblePlayerPower(p, this.magicNumber), this.magicNumber));
+        addToBot(new ApplyPowerAction(p, p, new WraithFormPower(p, -1), -1));
     }
 
     //Upgraded stats.
@@ -53,8 +53,8 @@ public class UndeadPersistence extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADED_COST);
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(MAGICNUMBER_PLUS);
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

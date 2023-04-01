@@ -1,14 +1,18 @@
 package theClanless.cards.core;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
-import theClanless.powers.BloodhealPower;
 import theClanless.theClanlessMod;
 
 import static theClanless.theClanlessMod.makeCardPath;
@@ -23,13 +27,15 @@ public class TasteOfVitae extends AbstractDynamicCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
-    private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardRarity RARITY = CardRarity.BASIC;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheClanless.Enums.COLOR_CLANLESSRED;
 
     private static final int COST = 1;
-    private static final int MAGICNUMBER  = 1;
+    private static final int DAMAGE = 7;
+    private static final int DAMAGE_PLUS = 1;
+    private static final int MAGICNUMBER  = 2;
     private static final int MAGICNUMBER_PLUS = 1;
 
 
@@ -38,15 +44,24 @@ public class TasteOfVitae extends AbstractDynamicCard {
 
     public TasteOfVitae() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        this.damage = this.baseDamage = DAMAGE;
         this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
-
-        this.exhaust = true;
+        this.tags.add(CardTags.HEALING);
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BloodhealPower(p, p, magicNumber)));
+        if (m != null) {
+            if (Settings.FAST_MODE) {
+                this.addToBot(new VFXAction(new BiteEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale, Settings.GOLD_COLOR.cpy()), 0.1F));
+            } else {
+                this.addToBot(new VFXAction(new BiteEffect(m.hb.cX, m.hb.cY - 40.0F * Settings.scale, Settings.GOLD_COLOR.cpy()), 0.3F));
+            }
+        }
+
+        this.addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+        this.addToBot(new HealAction(p, p, this.magicNumber));
     }
 
     //Upgraded stats.
@@ -54,8 +69,8 @@ public class TasteOfVitae extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeDamage(DAMAGE_PLUS);
             upgradeMagicNumber(MAGICNUMBER_PLUS);
-            this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

@@ -1,5 +1,8 @@
 package theClanless.cards.celerity;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,40 +17,34 @@ import static theClanless.theClanlessMod.makeCardPath;
 
 public class FastHands extends AbstractDynamicCard {
 
-    public static final String ID = theClanlessMod.makeID(FastHands.class.getSimpleName());
+    public static final String ID = theClanlessMod.makeID("FastHands");
     public static final String IMG = makeCardPath("FastHands.png");
 
-    // /TEXT DECLARATION/
 
-    // STAT DECLARATION
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
-    private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = TheClanless.Enums.CELERITY;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
 
-    private static final int MAGICNUMBER = 2;
-    private static final int MAGICNUMBER_PLUS = 2;
-
-    // /STAT DECLARATION/
+    private static final int DAMAGE = 6;
+    private static final int DAMAGE_PLUS = 3;
 
 
     public FastHands() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        this.baseMagicNumber = this.magicNumber = MAGICNUMBER;
+        this.damage = this.baseDamage = DAMAGE;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new FastHandsDiscardToHand(1, this.magicNumber)
-        );
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
     }
 
@@ -55,9 +52,8 @@ public class FastHands extends AbstractDynamicCard {
     @Override
     public void upgrade() {
         if (!upgraded) {
-            upgradeName();
-            upgradeMagicNumber(MAGICNUMBER_PLUS);
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            upgradeDamage(DAMAGE_PLUS);
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

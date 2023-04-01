@@ -3,6 +3,7 @@ package theClanless.cards.potence;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -34,11 +35,11 @@ public class ThrownGate extends AbstractDynamicCard {
 
     private static final int COST = 1;
 
-    private static final int DAMAGE = 6;
-    private static final int DAMAGE_PLUS = 3;
+    private static final int DAMAGE = 9;
+    private static final int DAMAGE_PLUS = 1;
 
-    private static final int MAGICNUMBER = 2;
-    private static final int MAGICNUMBER_PLUS = 2;
+    private static final int MAGICNUMBER = 1;
+    private static final int MAGICNUMBER_PLUS = 1;
 
     // /STAT DECLARATION/
 
@@ -53,9 +54,8 @@ public class ThrownGate extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new RangedAttackAction(p, m, damage, this.damageTypeForTurn, magicNumber, 1)
-        );
+        addToBot(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        addToBot(new DrawCardAction(p, this.magicNumber));
     }
 
 

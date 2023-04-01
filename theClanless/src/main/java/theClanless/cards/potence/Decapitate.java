@@ -14,7 +14,7 @@ import static theClanless.theClanlessMod.makeCardPath;
 
 public class Decapitate extends AbstractDynamicCard {
 
-    public static final String ID = theClanlessMod.makeID(Decapitate.class.getSimpleName());
+    public static final String ID = theClanlessMod.makeID("Decapitate");
     public static final String IMG = makeCardPath("Decapitate.png");
 
 
@@ -23,13 +23,13 @@ public class Decapitate extends AbstractDynamicCard {
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.SELF_AND_ENEMY;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheClanless.Enums.POTENCE;
 
-    private static final int COST = 0;
+    private static final int COST = 1;
 
-    private static final int MAGICNUMBER = 20;
+    private static final int MAGICNUMBER = 30;
     private static final int MAGICNUMBER_PLUS = 10;
 
 
@@ -37,7 +37,6 @@ public class Decapitate extends AbstractDynamicCard {
     public Decapitate() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
-
         }
 
     // Actions the card should do.
@@ -55,7 +54,7 @@ public class Decapitate extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(MAGICNUMBER_PLUS);
-            this.rawDescription = UPGRADE_DESCRIPTION;
+            //this.rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
+
+
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
@@ -22,7 +24,10 @@ import static theClanless.theClanlessMod.makeCardPath;
 
 public class Disarm extends AbstractDynamicCard {
 
+
     public static final String ID = theClanlessMod.makeID(Disarm.class.getSimpleName());
+    public static final String ID = theClanlessMod.makeID("Disarm");
+
     public static final String IMG = makeCardPath("Disarm.png");
 
 
@@ -35,23 +40,26 @@ public class Disarm extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheClanless.Enums.POTENCE;
 
+
     private static final int COST = 0;
 
     private static final int MAGICNUMBER = 0;
     private static final int MAGICNUMBER_PLUS = 2;
 
     private int buffAmount = 0;
+   
+
 
     public Disarm() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber = MAGICNUMBER;
+
     }
 
 
     // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber));
+
         addToBot(new ApplyPowerAction(m, p, new GainStrengthPower(m, this.magicNumber / 2), this.magicNumber / 2));
         if (this.buffAmount > 0) {
             this.baseMagicNumber -= this.buffAmount;
@@ -70,13 +78,15 @@ public class Disarm extends AbstractDynamicCard {
         }
     }
 
-    // Upgraded stats.
+
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(MAGICNUMBER_PLUS);
-            this.rawDescription = UPGRADE_DESCRIPTION;
+
+            //this.rawDescription = UPGRADE_DESCRIPTION;
+
             initializeDescription();
         }
     }
