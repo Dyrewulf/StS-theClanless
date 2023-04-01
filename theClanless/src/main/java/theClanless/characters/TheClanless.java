@@ -22,7 +22,10 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theClanless.cards.core.*;
+import theClanless.cards.core.BumsRush;
+import theClanless.cards.core.Dodge;
+import theClanless.cards.core.LuckyBlow;
+import theClanless.cards.core.TasteOfVitae;
 import theClanless.relics.CelerityRelic;
 import theClanless.relics.FortitudeRelic;
 import theClanless.relics.PotenceRelic;
@@ -38,7 +41,7 @@ import static theClanless.theClanlessMod.*;
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
 
-public class TheClanless extends CustomPlayer {
+public class  TheClanless extends CustomPlayer {
 
     public static final Logger logger = LogManager.getLogger(theClanlessMod.class.getName());
 

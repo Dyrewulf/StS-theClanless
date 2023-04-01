@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AfterImagePower;
-import com.megacrit.cardcrawl.powers.ThousandCutsPower;
 import theClanless.cards.AbstractDynamicCard;
 import theClanless.characters.TheClanless;
 import theClanless.theClanlessMod;

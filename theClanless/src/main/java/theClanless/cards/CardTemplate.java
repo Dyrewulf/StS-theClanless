@@ -7,8 +7,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theClanless.theClanlessMod;
 import theClanless.characters.TheClanless;
+import theClanless.theClanlessMod;
 
 import static theClanless.theClanlessMod.makeCardPath;
 
