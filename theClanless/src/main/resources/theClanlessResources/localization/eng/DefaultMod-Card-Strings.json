@@ -93,6 +93,11 @@
     "DESCRIPTION": "Gain !B! Block. NL Reduce Vulnerable by !M!. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Reduce Vulnerable and Weak by !M!. NL Exhaust."
   },
+  "theClanless:Disarm": {
+    "NAME": "Disarm",
+    "DESCRIPTION": "Reduce target's strength by !M!. Increase by 1 each attack played. Target recovers half of the lost strength.",
+    "UPGRADE_DESCRIPTION": "Reduce target's strength by !M!. Increase by 1 each attack played. Target recovers half of the lost strength."
+  },
   "theClanless:Distraction": {
     "NAME": "Distraction",
     "DESCRIPTION": "Draw cards until you have !M! in your hand."
