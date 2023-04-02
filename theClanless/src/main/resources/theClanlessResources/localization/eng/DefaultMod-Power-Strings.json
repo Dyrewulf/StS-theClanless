@@ -26,6 +26,12 @@
       " #yStrength."
     ]
 },
+  "theClanless:FeedingRazorPower": {
+    "NAME": "Feeding Razor",
+    "DESCRIPTIONS": [
+      "Your next #yAttack heals you for twenty percent of damage dealt (min. 2)."
+    ]
+  },
   "theClanless:FlurryOfActionPower": {
     "NAME": "Flurry of Action",
     "DESCRIPTIONS": [

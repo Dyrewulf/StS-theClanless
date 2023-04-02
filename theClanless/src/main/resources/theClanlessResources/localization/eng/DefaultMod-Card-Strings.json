@@ -348,7 +348,7 @@
     "DESCRIPTION": "Deal !D! damage. NL If Fatal, raise your Max HP by !M!. Exhaust."
   },
   "theClanless:StutterStep": {
-    "NAME": "Stutter-Step",
+    "NAME": "Stutter Step",
     "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage."
   },
   "theClanless:SuperiorMettle": {

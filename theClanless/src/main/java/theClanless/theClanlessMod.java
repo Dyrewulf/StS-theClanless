@@ -5,6 +5,7 @@ import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.eventUtil.AddEventParams;
+import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
@@ -26,6 +27,7 @@ import theClanless.cards.AbstractClanlessCard;
 import theClanless.characters.TheClanless;
 import theClanless.events.IdentityCrisisEvent;
 import theClanless.potions.GiantsBloodPotion;
+import theClanless.potions.ZillahsTears;
 import theClanless.relics.*;
 import theClanless.util.IDCheckDontTouchPls;
 import theClanless.util.TextureLoader;
@@ -103,6 +105,10 @@ public class theClanlessMod implements
     public static final Color GIANTSBLOOD_POTION_LIQUID = CardHelper.getColor(168.0f, 50.0f, 50.0f); // Red
     public static final Color GIANTSBLOOD_POTION_SPOTS = CardHelper.getColor(140.0f, 180.0f, 230.0f); // Blue-Grey
     public static final Color GIANTSBLOOD_POTION_HYBRID = CardHelper.getColor(155.0f, 50.0f, 20.0f); // Rust
+
+    public static final Color ZILLAHS_POTION_LIQUID = CardHelper.getColor(150.0f, 0.0f, 190.0f); // Purple
+    public static final Color ZILLAHS_POTION_SPOTS = CardHelper.getColor(128.0f, 128.0f, 128.0f); // Grey
+    public static final Color ZILLAHS_POTION_HYBRID = CardHelper.getColor(0.0f, 60.0f, 190.0f); // Blue
     
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
@@ -425,8 +431,10 @@ public class theClanlessMod implements
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
         //BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheClanless.Enums.THE_CLANLESS);
-        BaseMod.addPotion(GiantsBloodPotion.class, GIANTSBLOOD_POTION_LIQUID, GIANTSBLOOD_POTION_HYBRID, GIANTSBLOOD_POTION_SPOTS, GiantsBloodPotion.POTION_ID, TheClanless.Enums.THE_CLANLESS);
+        //BaseMod.addPotion(GiantsBloodPotion.class, GIANTSBLOOD_POTION_LIQUID, GIANTSBLOOD_POTION_HYBRID, GIANTSBLOOD_POTION_SPOTS, GiantsBloodPotion.POTION_ID, TheClanless.Enums.THE_CLANLESS);
+        BaseMod.addPotion(ZillahsTears.class, ZILLAHS_POTION_LIQUID, ZILLAHS_POTION_HYBRID, ZILLAHS_POTION_SPOTS, ZillahsTears.POTION_ID, TheClanless.Enums.THE_CLANLESS);
 
+        BaseMod.addPotion(GiantsBloodPotion.class, GIANTSBLOOD_POTION_LIQUID, GIANTSBLOOD_POTION_HYBRID, GIANTSBLOOD_POTION_SPOTS, GiantsBloodPotion.POTION_ID);
 
         logger.info("Done editing potions");
     }
@@ -446,6 +454,8 @@ public class theClanlessMod implements
         BaseMod.addRelicToCustomPool(new FortitudeRelic(), TheClanless.Enums.COLOR_CLANLESSRED);
         BaseMod.addRelicToCustomPool(new HandOfConrad(), TheClanless.Enums.COLOR_CLANLESSRED);
         BaseMod.addRelicToCustomPool(new DrumOfXipeTopec(), TheClanless.Enums.COLOR_CLANLESSRED);
+        BaseMod.addRelic(new AaronsFeedingRazor(), RelicType.SHARED);
+        BaseMod.addRelic(new ProtractedInvestment(), RelicType.SHARED);
         
         // Mark relics as seen - makes it visible in the compendium immediately
         // If you don't have this it won't be visible in the compendium until you see them in game

@@ -1,4 +1,11 @@
 {
+  "theClanless:AaronsFeedingRazorRelic": {
+    "NAME": "Aaron's Feeding Razor",
+    "FLAVOR": "Take care how you cut yourself. It is more dangerous than you think...",
+    "DESCRIPTIONS": [
+      "Every 10 attacks you play heal you for 20% of the damage dealt, minimum 2."
+    ]
+  },
   "theClanless:CelerityRelic": {
     "NAME": "Celerity",
     "FLAVOR": "Quick with the quickness.",
@@ -32,6 +39,13 @@
     "FLAVOR": "Stonk with the stonkness.",
     "DESCRIPTIONS": [
       "Adds Potence cards to rewards."
+    ]
+  },
+  "theClanless:ProtractedInvestmentRelic": {
+    "NAME": "Protracted Investment",
+    "FLAVOR": "Hold until you die, and continue holding.",
+    "DESCRIPTIONS": [
+      "Invests all of your gold. Each time you defeat an elite or boss, collect 40 percent, up to 5 times!"
     ]
   }
 }

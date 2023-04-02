@@ -13,5 +13,13 @@
                         "Gain ",
                         " temporary hp for each of your missing HP (includes current temporary hp)."
                 ]
+        },
+        "theClanless:ZillahsTearsPotion": {
+                "NAME": "Zillah's Tears",
+                "DESCRIPTIONS": [
+                        "Exchange HP for !E! or !E! for HP.",
+                        "Exchange HP for !E! or !E! for HP.",
+                        "Exchange HP for !E! or !E! for HP at a better rate."
+                ]
         }
 }
